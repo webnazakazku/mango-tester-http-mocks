@@ -2,12 +2,18 @@
 	"name": "mangoweb/tester-http-mocks",
 	"type": "library",
 	"license": "MIT",
+	"repositories": [
+		{
+			"type": "vcs",
+			"url": "https://github.com/webnazakazku/mango-tester-infrastructure"
+		}
+	],
 	"require": {
 		"php": ">=7.1",
 		"nette/http": "~3.0"
 	},
 	"require-dev": {
-		"phpstan/phpstan": "^0.12",
+		"phpstan/phpstan": "^1.0",
 		"mangoweb/tester-infrastructure": "@dev"
 	},
 	"autoload": {

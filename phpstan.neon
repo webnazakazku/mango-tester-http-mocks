@@ -1,3 +1,3 @@
 parameters:
-	ignoreErrors:
-		- '#Mangoweb\\Tester\\HttpMocks\\Session::__construct\(\) does not call parent constructor from Nette\\Http\\Session.#'
+    ignoreErrors:
+        - "#^Return type \\(void\\) of method Mangoweb\\\\Tester\\\\HttpMocks\\\\Session\\:\\:setHandler\\(\\) should be compatible with return type \\(static\\(Nette\\\\Http\\\\Session\\)\\) of method Nette\\\\Http\\\\Session\\:\\:setHandler\\(\\)$#"

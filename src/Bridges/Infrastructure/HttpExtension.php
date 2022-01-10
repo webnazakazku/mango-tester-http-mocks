@@ -8,6 +8,7 @@ use Nette\DI\CompilerExtension;
 
 class HttpExtension extends CompilerExtension
 {
+    /** @var string[] */
 	public $defaults = [
 		'baseUrl' => 'https://test.dev',
 	];

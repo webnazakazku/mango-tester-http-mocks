@@ -8,21 +8,22 @@ use Nette;
 class SessionSection extends Nette\Http\SessionSection
 {
 
+    /** @var array<mixed> */
 	private $data = [];
 
 
-	public function __construct(Nette\Http\Session $session, $name)
+	public function __construct(Nette\Http\Session $session, string $name)
 	{
 		parent::__construct($session, $name);
 	}
 
-
+    /** @return \Iterator<mixed> */
 	public function getIterator(): \Iterator
 	{
 		return new \ArrayIterator($this->data);
 	}
 
-
+    /** @param mixed $value */
 	public function __set(string $name, $value): void
 	{
 		$this->data[$name] = $value;
@@ -62,7 +63,7 @@ class SessionSection extends Nette\Http\SessionSection
 	}
 
 
-	public function remove(): void
+	public function remove($name = null): void
 	{
 		$this->data = [];
 	}

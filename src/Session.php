@@ -72,14 +72,14 @@ class Session extends Nette\Http\Session
 		return $this->id;
 	}
 
-
-	public function setFakeId($id)
+    /** @param mixed $id */
+	public function setFakeId($id): void
 	{
 		$this->id = $id;
 	}
 
-
-	public function getSection(string $section, $class = SessionSection::class): Nette\Http\SessionSection
+    /** @return Nette\Http\SessionSection<mixed> */
+	public function getSection(string $section, string $class = SessionSection::class): Nette\Http\SessionSection
 	{
 		if (isset($this->sections[$section])) {
 			return $this->sections[$section];
@@ -97,7 +97,7 @@ class Session extends Nette\Http\Session
 		return isset($this->sections[$section]);
 	}
 
-
+    /** @return \ArrayIterator<int, (int|string)>*/
 	public function getIterator(): \Iterator
 	{
 		return new \ArrayIterator(array_keys($this->sections));
@@ -109,7 +109,7 @@ class Session extends Nette\Http\Session
 	}
 
 
-	public function setName(string $name)
+	public function setName(string $name): self
 	{
 		return $this;
 	}
@@ -120,44 +120,44 @@ class Session extends Nette\Http\Session
 		return '';
 	}
 
-
-	public function setOptions(array $options)
+    /** @param array<mixed> $options */
+	public function setOptions(array $options): self
 	{
 		return $this;
 	}
 
-
+    /** @return array<mixed> */
 	public function getOptions(): array
 	{
 		return [];
 	}
 
 
-	public function setExpiration(?string $time)
+	public function setExpiration(?string $time): self
 	{
 		return $this;
 	}
 
 
-	public function setCookieParameters(string $path, string $domain = NULL, bool $secure = NULL, string $samesite = NULL)
+	public function setCookieParameters(string $path, string $domain = NULL, bool $secure = NULL, string $samesite = NULL): self
 	{
 		return $this;
 	}
 
-
+    /** @return array<null> */
 	public function getCookieParameters(): array
 	{
 		return [];
 	}
 
 
-	public function setSavePath(string $path)
+	public function setSavePath(string $path): self
 	{
 		return $this;
 	}
 
 
-	public function setHandler(\SessionHandlerInterface $handler)
+	public function setHandler(\SessionHandlerInterface $handler): void
 	{
 	}
 }

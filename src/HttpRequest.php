@@ -7,14 +7,14 @@ use Nette\Http\Request;
 
 class HttpRequest extends Request
 {
-	/** @var array */
+	/** @var array<mixed> */
 	private $headers = [];
 
 	/** @var string|NULL */
 	private $body;
 
 
-	public function setRawBody(?string $body)
+	public function setRawBody(?string $body): void
 	{
 		$this->body = $body;
 	}
@@ -26,7 +26,7 @@ class HttpRequest extends Request
 	}
 
 
-	public function setHeader(string $name, string $value)
+	public function setHeader(string $name, string $value): void
 	{
 		$this->headers[$name] = $value;
 	}
@@ -40,7 +40,9 @@ class HttpRequest extends Request
 		return parent::getHeader($header);
 	}
 
-
+    /**
+     * @return array<mixed>
+     */
 	public function getHeaders(): array
 	{
 		return array_merge(parent::getHeaders(), $this->headers);
