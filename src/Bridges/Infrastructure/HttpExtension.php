@@ -1,9 +1,9 @@
 <?php declare(strict_types = 1);
 
-namespace Mangoweb\Tester\HttpMocks\Bridges\Infrastructure;
+namespace Webnazakazku\MangoTester\HttpMocks\Bridges\Infrastructure;
 
-use Mangoweb\Tester\Infrastructure\MangoTesterExtension;
 use Nette\DI\CompilerExtension;
+use Webnazakazku\MangoTester\Infrastructure\MangoTesterExtension;
 
 
 class HttpExtension extends CompilerExtension

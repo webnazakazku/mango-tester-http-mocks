@@ -1,6 +1,6 @@
 Mango Tester nette/http mocks
 ======
-[![Build Status](https://travis-ci.org/mangoweb-backend/tester-http-mocks.svg?branch=master)](https://travis-ci.org/mangoweb-backend/tester-http-mocks)
+[![Build Status](https://github.com/webnazakazku/mango-tester-http-mocks/actions/workflows/main.yaml/badge.svg)](https://github.com/webnazakazku/mango-tester-http-mocks/actions/workflows/main.yaml)
 
 
 Installation
@@ -9,5 +9,5 @@ Installation
 The recommended way to install is via Composer:
 
 ```
-composer require mangoweb/tester-http-mocks
+composer require webnazakazku/mango-tester-http-mocks
 ```

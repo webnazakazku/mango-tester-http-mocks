@@ -1,14 +1,14 @@
 <?php declare(strict_types = 1);
 
-namespace Mangoweb\Tester\HttpMocks\Bridges\Infrastructure;
+namespace Webnazakazku\MangoTester\HttpMocks\Bridges\Infrastructure;
 
-use Mangoweb\Tester\HttpMocks\HttpRequest;
-use Mangoweb\Tester\HttpMocks\Session;
-use Mangoweb\Tester\Infrastructure\Container\AppContainerHook;
 use Nette\DI\ContainerBuilder;
 use Nette\DI\Definitions\Statement;
 use Nette\Http\Request;
 use Nette\Http\UrlScript;
+use Webnazakazku\MangoTester\HttpMocks\HttpRequest;
+use Webnazakazku\MangoTester\HttpMocks\Session;
+use Webnazakazku\MangoTester\Infrastructure\Container\AppContainerHook;
 
 
 class HttpMocksContainerHook extends AppContainerHook

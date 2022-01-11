@@ -1,6 +1,6 @@
 <?php declare(strict_types = 1);
 
-namespace Mangoweb\Tester\HttpMocks;
+namespace Webnazakazku\MangoTester\HttpMocks;
 
 use Nette;
 

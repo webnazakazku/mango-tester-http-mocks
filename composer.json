@@ -1,5 +1,5 @@
 {
-	"name": "mangoweb/tester-http-mocks",
+	"name": "webnazakazku/mango-tester-http-mocks",
 	"type": "library",
 	"license": "MIT",
 	"repositories": [
@@ -14,7 +14,7 @@
 	},
 	"require-dev": {
 		"phpstan/phpstan": "^1.0",
-		"mangoweb/tester-infrastructure": "@dev"
+		"webnazakazku/mango-tester-infrastructure": "dev-master"
 	},
 	"autoload": {
 		"classmap": [
