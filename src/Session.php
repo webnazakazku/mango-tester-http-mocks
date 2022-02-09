@@ -32,7 +32,13 @@ class Session extends Nette\Http\Session
 	}
 
 
-	public function isStarted(): bool
+	public function autoStart(bool $forWrite): void
+	{
+		$this->started = TRUE;
+	}
+
+
+    public function isStarted(): bool
 	{
 		return $this->started;
 	}
