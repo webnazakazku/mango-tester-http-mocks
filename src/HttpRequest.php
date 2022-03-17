@@ -4,15 +4,14 @@ namespace Webnazakazku\MangoTester\HttpMocks;
 
 use Nette\Http\Request;
 
-
 class HttpRequest extends Request
 {
+
 	/** @var array<mixed> */
 	private $headers = [];
 
 	/** @var string|NULL */
 	private $body;
-
 
 	public function setRawBody(?string $body): void
 	{
@@ -37,12 +36,13 @@ class HttpRequest extends Request
 		if (isset($this->headers[$header])) {
 			return $this->headers[$header];
 		}
+
 		return parent::getHeader($header);
 	}
 
-    /**
-     * @return array<mixed>
-     */
+	/**
+	 * @return array<mixed>
+	 */
 	public function getHeaders(): array
 	{
 		return array_merge(parent::getHeaders(), $this->headers);
@@ -51,6 +51,7 @@ class HttpRequest extends Request
 
 	public function isSameSite(): bool
 	{
-		return TRUE;
+		return true;
 	}
+
 }

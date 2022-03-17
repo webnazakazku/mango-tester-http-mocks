@@ -5,14 +5,13 @@ namespace Webnazakazku\MangoTester\HttpMocks\Bridges\Infrastructure;
 use Nette\DI\CompilerExtension;
 use Webnazakazku\MangoTester\Infrastructure\MangoTesterExtension;
 
-
 class HttpExtension extends CompilerExtension
 {
-    /** @var string[] */
+
+	/** @var string[] */
 	public $defaults = [
 		'baseUrl' => 'https://test.dev',
 	];
-
 
 	public function loadConfiguration()
 	{
@@ -24,4 +23,5 @@ class HttpExtension extends CompilerExtension
 			->setArguments([$config['baseUrl']])
 			->addTag(MangoTesterExtension::TAG_HOOK);
 	}
+
 }

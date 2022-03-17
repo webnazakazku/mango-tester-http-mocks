@@ -13,6 +13,7 @@
 		"nette/http": "~3.0"
 	},
 	"require-dev": {
+		"ninjify/qa": "^0.13",
 		"phpstan/phpstan": "^1.0",
 		"webnazakazku/mango-tester-infrastructure": "dev-master"
 	},

@@ -10,12 +10,11 @@ use Webnazakazku\MangoTester\HttpMocks\HttpRequest;
 use Webnazakazku\MangoTester\HttpMocks\Session;
 use Webnazakazku\MangoTester\Infrastructure\Container\AppContainerHook;
 
-
 class HttpMocksContainerHook extends AppContainerHook
 {
+
 	/** @var string */
 	private $baseUrl;
-
 
 	public function __construct(string $baseUrl)
 	{
@@ -37,4 +36,5 @@ class HttpMocksContainerHook extends AppContainerHook
 				->setFactory(Session::class);
 		}
 	}
+
 }

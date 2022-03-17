@@ -2,28 +2,28 @@
 
 namespace Webnazakazku\MangoTester\HttpMocks;
 
+use ArrayIterator;
+use Iterator;
 use Nette;
-
 
 class SessionSection extends Nette\Http\SessionSection
 {
 
-    /** @var array<mixed> */
+	/** @var array<mixed> */
 	private $data = [];
-
 
 	public function __construct(Nette\Http\Session $session, string $name)
 	{
 		parent::__construct($session, $name);
 	}
 
-    /** @return \Iterator<mixed> */
-	public function getIterator(): \Iterator
+	/** @return Iterator<mixed> */
+	public function getIterator(): Iterator
 	{
-		return new \ArrayIterator($this->data);
+		return new ArrayIterator($this->data);
 	}
 
-    /** @param mixed $value */
+	/** @phpstan-param mixed $value */
 	public function __set(string $name, $value): void
 	{
 		$this->data[$name] = $value;
@@ -33,7 +33,7 @@ class SessionSection extends Nette\Http\SessionSection
 	public function &__get(string $name)
 	{
 		if ($this->warnOnUndefined && !array_key_exists($name, $this->data)) {
-			trigger_error("The variable '$name' does not exist in session section", E_USER_NOTICE);
+			trigger_error("The variable '" . $name . ' does not exist in session section', E_USER_NOTICE);
 		}
 
 		return $this->data[$name];
@@ -52,13 +52,13 @@ class SessionSection extends Nette\Http\SessionSection
 	}
 
 
-	public function setExpiration($time, $variables = NULL)
+	public function setExpiration($time, $variables = null)
 	{
 		return $this;
 	}
 
 
-	public function removeExpiration($variables = NULL): void
+	public function removeExpiration($variables = null): void
 	{
 	}
 
