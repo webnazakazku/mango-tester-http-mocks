@@ -16,9 +16,13 @@ class HttpMocksContainerHook extends AppContainerHook
 	/** @var string */
 	private $baseUrl;
 
-	public function __construct(string $baseUrl)
+	/** @var bool */
+	private $sessionMock;
+
+	public function __construct(string $baseUrl, bool $sessionMock)
 	{
 		$this->baseUrl = $baseUrl;
+		$this->sessionMock = $sessionMock;
 	}
 
 
@@ -30,10 +34,12 @@ class HttpMocksContainerHook extends AppContainerHook
 				->setFactory(HttpRequest::class, [new Statement(UrlScript::class, [$this->baseUrl])]);
 		}
 
-		if ($builder->hasDefinition('session.session')) {
-			$builder->getDefinition('session.session')
-				->setClass(\Nette\Http\Session::class)
-				->setFactory(Session::class);
+		if ($this->sessionMock) {
+			if ($builder->hasDefinition('session.session')) {
+				$builder->getDefinition('session.session')
+					->setClass(\Nette\Http\Session::class)
+					->setFactory(Session::class);
+			}
 		}
 	}
 

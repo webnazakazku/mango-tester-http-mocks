@@ -8,9 +8,10 @@ use Webnazakazku\MangoTester\Infrastructure\MangoTesterExtension;
 class HttpExtension extends CompilerExtension
 {
 
-	/** @var string[] */
+	/** @var array<string|bool> */
 	public $defaults = [
 		'baseUrl' => 'https://test.dev',
+		'sessionMock' => true,
 	];
 
 	public function loadConfiguration()
@@ -20,7 +21,12 @@ class HttpExtension extends CompilerExtension
 
 		$builder->addDefinition($this->prefix('mocksContainerHook'))
 			->setClass(HttpMocksContainerHook::class)
-			->setArguments([$config['baseUrl']])
+			->setArguments(
+				[
+					$config['baseUrl'],
+					$config['sessionMock'],
+				]
+			)
 			->addTag(MangoTesterExtension::TAG_HOOK);
 	}
 
