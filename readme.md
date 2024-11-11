@@ -9,7 +9,8 @@ Installation
 The recommended way to install is via Composer:
 
 ```
-composer require webnazakazku/mango-tester-http-mocks
+composer require webnazakazku/mango-tester-http-mocks --dev
+composer require dg/bypass-finals --dev
 ```
 
 Usage
@@ -24,4 +25,18 @@ extensions:
 mango.tester.httpMock:
 	baseUrl: 'https://test.dev'
 	sessionMock: true #or false
+```
+
+`tests/bpotstrap.php`
+
+```php
+<?php declare(strict_types = 1);
+
+
+require __DIR__ . '/../vendor/autoload.php';
+
+DG\BypassFinals::enable(); //required
+
+$configurator = new Nette\Bootstrap\Configurator();
+...
 ```
