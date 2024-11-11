@@ -8,28 +8,25 @@ class HttpRequest extends Request
 {
 
 	/** @var array<mixed> */
-	private $headers = [];
+	private array $headers = [];
 
 	/** @var string|NULL */
-	private $body;
+	private ?string $body;
 
 	public function setRawBody(?string $body): void
 	{
 		$this->body = $body;
 	}
 
-
 	public function getRawBody(): ?string
 	{
 		return $this->body ?? parent::getRawBody();
 	}
 
-
 	public function setHeader(string $name, string $value): void
 	{
 		$this->headers[$name] = $value;
 	}
-
 
 	public function getHeader(string $header): ?string
 	{
@@ -47,7 +44,6 @@ class HttpRequest extends Request
 	{
 		return array_merge(parent::getHeaders(), $this->headers);
 	}
-
 
 	public function isSameSite(): bool
 	{

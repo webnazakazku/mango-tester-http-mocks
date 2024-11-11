@@ -13,18 +13,15 @@ use Webnazakazku\MangoTester\Infrastructure\Container\AppContainerHook;
 class HttpMocksContainerHook extends AppContainerHook
 {
 
-	/** @var string */
-	private $baseUrl;
+	private string $baseUrl;
 
-	/** @var bool */
-	private $sessionMock;
+	private bool $sessionMock;
 
 	public function __construct(string $baseUrl, bool $sessionMock)
 	{
 		$this->baseUrl = $baseUrl;
 		$this->sessionMock = $sessionMock;
 	}
-
 
 	public function onCompile(ContainerBuilder $builder): void
 	{

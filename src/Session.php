@@ -4,89 +4,77 @@ namespace Webnazakazku\MangoTester\HttpMocks;
 
 use ArrayIterator;
 use Iterator;
-use Nette;
+use Nette\Http\Session as NetteSession;
+use Nette\Http\SessionSection as NetteSessionSection;
 use SessionHandlerInterface;
 
-class Session extends Nette\Http\Session
+class Session extends NetteSession
 {
 
 	/** @var SessionSection[] */
-	private $sections = [];
+	private array $sections = [];
 
-	/** @var bool */
-	private $started = false;
+	private bool $started = false;
 
-	/** @var bool */
-	private $exists = false;
+	private bool $exists = false;
 
-	/** @var string */
-	private $id;
+	private string $id;
 
 	public function __construct()
 	{
 	}
-
 
 	public function start(): void
 	{
 		$this->started = true;
 	}
 
-
 	public function autoStart(bool $forWrite): void
 	{
 		$this->started = true;
 	}
-
 
 	public function isStarted(): bool
 	{
 		return $this->started;
 	}
 
-
 	public function close(): void
 	{
 		$this->started = false;
 	}
-
 
 	public function destroy(): void
 	{
 		$this->started = false;
 	}
 
-
 	public function exists(): bool
 	{
 		return $this->exists;
 	}
-
 
 	public function setFakeExists(bool $exists): void
 	{
 		$this->exists = $exists;
 	}
 
-
 	public function regenerateId(): void
 	{
 	}
-
 
 	public function getId(): string
 	{
 		return $this->id;
 	}
 
-	/** @param mixed $id */
-	public function setFakeId($id): void
+	public function setFakeId(mixed $id): void
 	{
 		$this->id = $id;
 	}
 
-	/** @return Nette\Http\SessionSection<mixed> */
-	public function getSection(string $section, string $class = SessionSection::class): Nette\Http\SessionSection
+	/** @return NetteSessionSection<mixed> */
+	public function getSection(string $section, string $class = SessionSection::class): NetteSessionSection
 	{
 		if (isset($this->sections[$section])) {
 			return $this->sections[$section];
@@ -97,7 +85,6 @@ class Session extends Nette\Http\Session
 
 		return $this->sections[$section] = $sessionSection;
 	}
-
 
 	public function hasSection(string $section): bool
 	{
@@ -110,17 +97,14 @@ class Session extends Nette\Http\Session
 		return new ArrayIterator(array_keys($this->sections));
 	}
 
-
 	public function clean(): void
 	{
 	}
 
-
-	public function setName(string $name): self
+	public function setName(string $name): static
 	{
 		return $this;
 	}
-
 
 	public function getName(): string
 	{
@@ -128,7 +112,7 @@ class Session extends Nette\Http\Session
 	}
 
 	/** @param array<mixed> $options */
-	public function setOptions(array $options): self
+	public function setOptions(array $options): static
 	{
 		return $this;
 	}
@@ -139,14 +123,12 @@ class Session extends Nette\Http\Session
 		return [];
 	}
 
-
-	public function setExpiration(?string $time): self
+	public function setExpiration(?string $time): static
 	{
 		return $this;
 	}
 
-
-	public function setCookieParameters(string $path, ?string $domain = null, ?bool $secure = null, ?string $samesite = null): self
+	public function setCookieParameters(string $path, ?string $domain = null, ?bool $secure = null, ?string $samesite = null): static
 	{
 		return $this;
 	}
@@ -157,15 +139,14 @@ class Session extends Nette\Http\Session
 		return [];
 	}
 
-
-	public function setSavePath(string $path): self
+	public function setSavePath(string $path): static
 	{
 		return $this;
 	}
 
-
-	public function setHandler(SessionHandlerInterface $handler): void
+	public function setHandler(SessionHandlerInterface $handler): static
 	{
+		return $this;
 	}
 
 }

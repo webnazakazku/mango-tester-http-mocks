@@ -9,12 +9,12 @@ class HttpExtension extends CompilerExtension
 {
 
 	/** @var array<string|bool> */
-	public $defaults = [
+	public array $defaults = [
 		'baseUrl' => 'https://test.dev',
 		'sessionMock' => true,
 	];
 
-	public function loadConfiguration()
+	public function loadConfiguration(): void
 	{
 		$builder = $this->getContainerBuilder();
 		$config = $this->validateConfig($this->defaults);
