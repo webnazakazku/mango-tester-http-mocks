@@ -3,28 +3,38 @@
 namespace Webnazakazku\MangoTester\HttpMocks\Bridges\Infrastructure;
 
 use Nette\DI\CompilerExtension;
+use Nette\Schema\Expect;
+use Nette\Schema\Schema;
 use Webnazakazku\MangoTester\Infrastructure\MangoTesterExtension;
 
+/**
+ * @property-read \stdClass $config
+ */
 class HttpExtension extends CompilerExtension
 {
 
-	/** @var array<string|bool> */
-	public array $defaults = [
-		'baseUrl' => 'https://test.dev',
-		'sessionMock' => true,
-	];
+	public function getConfigSchema(): Schema
+	{
+		return Expect::structure([
+			'baseUrl' => Expect::string()
+				->default('https://test.dev'),
+			'sessionMock' => Expect::bool()
+				->default(true),
+		]);
+	}
 
 	public function loadConfiguration(): void
 	{
 		$builder = $this->getContainerBuilder();
-		$config = $this->validateConfig($this->defaults);
+
+		$config = $this->config;
 
 		$builder->addDefinition($this->prefix('mocksContainerHook'))
-			->setClass(HttpMocksContainerHook::class)
+			->setType(HttpMocksContainerHook::class)
 			->setArguments(
 				[
-					$config['baseUrl'],
-					$config['sessionMock'],
+					$config->baseUrl, // Fixed the double ->config typo
+					$config->sessionMock,
 				]
 			)
 			->addTag(MangoTesterExtension::TAG_HOOK);

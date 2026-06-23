@@ -3,6 +3,7 @@
 namespace Webnazakazku\MangoTester\HttpMocks\Bridges\Infrastructure;
 
 use Nette\DI\ContainerBuilder;
+use Nette\DI\Definitions\ServiceDefinition;
 use Nette\DI\Definitions\Statement;
 use Nette\Http\Request;
 use Nette\Http\UrlScript;
@@ -26,16 +27,22 @@ class HttpMocksContainerHook extends AppContainerHook
 	public function onCompile(ContainerBuilder $builder): void
 	{
 		if ($builder->hasDefinition('http.request')) {
-			$builder->getDefinition('http.request')
-				->setClass(Request::class)
-				->setFactory(HttpRequest::class, [new Statement(UrlScript::class, [$this->baseUrl])]);
+			$definition = $builder->getDefinition('http.request');
+			if ($definition instanceof ServiceDefinition) {
+				$definition
+					->setType(Request::class)
+					->setFactory(HttpRequest::class, [new Statement(UrlScript::class, [$this->baseUrl])]);
+			}
 		}
 
 		if ($this->sessionMock) {
 			if ($builder->hasDefinition('session.session')) {
-				$builder->getDefinition('session.session')
-					->setClass(\Nette\Http\Session::class)
-					->setFactory(Session::class);
+				$definition = $builder->getDefinition('session.session');
+				if ($definition instanceof ServiceDefinition) {
+					$definition
+						->setType(\Nette\Http\Session::class)
+						->setFactory(Session::class);
+				}
 			}
 		}
 	}

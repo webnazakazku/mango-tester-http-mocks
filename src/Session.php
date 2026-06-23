@@ -4,6 +4,8 @@ namespace Webnazakazku\MangoTester\HttpMocks;
 
 use ArrayIterator;
 use Iterator;
+use Nette\Http\IRequest;
+use Nette\Http\IResponse;
 use Nette\Http\Session as NetteSession;
 use Nette\Http\SessionSection as NetteSessionSection;
 use SessionHandlerInterface;
@@ -20,8 +22,12 @@ class Session extends NetteSession
 
 	private string $id;
 
-	public function __construct()
+	public function __construct(
+		private IRequest $request,
+		private IResponse $response
+	)
 	{
+		parent::__construct($this->request, $this->response);
 	}
 
 	public function start(): void
@@ -117,7 +123,7 @@ class Session extends NetteSession
 		return $this;
 	}
 
-	/** @return array<mixed> */
+	/** @return array<string, mixed> */
 	public function getOptions(): array
 	{
 		return [];

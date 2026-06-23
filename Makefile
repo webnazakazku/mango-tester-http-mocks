@@ -12,4 +12,4 @@ csf:
 	vendor/bin/codefixer src
 
 phpstan:
-	vendor/bin/phpstan analyse -l 8 -c phpstan.neon src
+	vendor/bin/phpstan analyse -c phpstan.neon src

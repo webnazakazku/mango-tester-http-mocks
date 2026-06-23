@@ -38,7 +38,7 @@ class HttpRequest extends Request
 	}
 
 	/**
-	 * @return array<mixed>
+	 * @return array<string, string>
 	 */
 	public function getHeaders(): array
 	{
