@@ -6,10 +6,13 @@
     <!-- Specific rules -->
     <rule ref="SlevomatCodingStandard.Files.TypeNameMatchesFileName">
         <properties>
-            <property name="rootNamespaces" type="array" value="
-                src=>Webnazakazku\MangoTester\HttpMocks,
-			"/>
-            <property name="extensions" type="array" value="php,phpt"/>
+            <property name="rootNamespaces" type="array">
+                <element key="src" value="Webnazakazku\MangoTester\HttpMocks"/>
+            </property>
+            <property name="extensions" type="array">
+                <element value="php"/>
+                <element value="phpt"/>
+            </property>
         </properties>
         <exclude name="SlevomatCodingStandard.PHP.DisallowReference.DisallowedReturningReference" />
         <exclude name="SlevomatCodingStandard.Functions.DisallowEmptyFunction.EmptyFunction" />
