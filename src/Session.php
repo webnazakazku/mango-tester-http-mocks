@@ -6,6 +6,7 @@ use ArrayIterator;
 use Iterator;
 use Nette\Http\IRequest;
 use Nette\Http\IResponse;
+use Nette\Http\SameSite;
 use Nette\Http\Session as NetteSession;
 use Nette\Http\SessionSection as NetteSessionSection;
 use SessionHandlerInterface;
@@ -134,7 +135,7 @@ class Session extends NetteSession
 		return $this;
 	}
 
-	public function setCookieParameters(string $path, ?string $domain = null, ?bool $secure = null, ?string $samesite = null): static
+	public function setCookieParameters(string $path, ?string $domain = null, ?bool $secure = null, SameSite|string|null $sameSite = null): static
 	{
 		return $this;
 	}
