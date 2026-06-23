@@ -4,4 +4,8 @@ includes:
 
 parameters:
 	level: 8
-	ignoreErrors: []
+
+	ignoreErrors:
+		-
+			message: '#^Parameter \$sameSite of method Webnazakazku\\MangoTester\\HttpMocks\\Session\:\:setCookieParameters\(\) has invalid type Nette\\Http\\SameSite\.$#'
+			reportUnmatched: false
