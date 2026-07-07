@@ -2,6 +2,8 @@
 
 namespace Webnazakazku\MangoTester\HttpMocks;
 
+use Nette\Http\FetchDest;
+use Nette\Http\FetchSite;
 use Nette\Http\Request;
 
 class HttpRequest extends Request
@@ -46,6 +48,11 @@ class HttpRequest extends Request
 	}
 
 	public function isSameSite(): bool
+	{
+		return true;
+	}
+
+	public function isFrom(array|FetchSite $site, array|FetchDest|null $dest = null, ?bool $user = null,): bool
 	{
 		return true;
 	}
